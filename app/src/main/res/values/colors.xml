@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#273C56</color>
+    <color name="colorPrimaryDark">#273C56</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="backgroundeEmail">#0E4270</color>
+    <color name="backgroundApp">#0E4270</color>
+    <color name="aspeta">#FBD476</color>
+    <color name="backgroundEmail">#123452</color>
+    <color name="backgroundEmailInside">#2C577C</color>
+    <color name="primiDiAndare">#F8FAFB</color>
+    <color name="backgButtonIniziaOra">#E9C367</color>
+    <color name="blackDark">#030404</color>
+    <color name="backgroundForm">#273C56</color>
+    <color name="backgroundFieldForm">#FFFFFF</color>
+    <color name="hintForm">#1A2A38</color>
+    <color name="privacyPolicy">#EED476</color>
+
+</resources>
