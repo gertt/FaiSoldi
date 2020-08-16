@@ -18,13 +18,9 @@ import static com.dailybenefit1k.util.Contants.EMAIL_PATERN;
 
 public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter<T> implements EmailMenu.Presenter<T>{
 
-    EmailMenu.View view;
-
     private Disposable disposable;
 
     PrefStorage prefStorage;
-
-
 
     @Inject
     public EmailMenuPreImpl(PrefStorage prefStorage) {
@@ -32,11 +28,6 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
 
     }
 
-    @Override
-    public void setView(T view) {
-        this.view = view;
-
-    }
 
     @Override
     public void countnNumber() {
@@ -48,7 +39,7 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        view.onTick(Long.toString(start - aLong));
+                        getmMvpView().onTick(Long.toString(start - aLong));
                     }
                 });
     }
@@ -57,10 +48,10 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
     public void checkField(String email) {
 
         if (!email.matches(EMAIL_PATERN)) {
-            view.checkEmail();
+            getmMvpView().checkEmail();
         } else {
             prefStorage.saveEmail(email);
-            view.success();
+            getmMvpView().success();
         }
     }
 

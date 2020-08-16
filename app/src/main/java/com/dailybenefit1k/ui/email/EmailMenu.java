@@ -21,7 +21,7 @@ public interface EmailMenu  extends  Base.MvpView {
 
     interface Presenter  <T extends Base.MvpView>  extends Base.MvpPresenter<T>{
 
-        void setView(T view);
+        //void setView(T view);
 
         void countnNumber();
 

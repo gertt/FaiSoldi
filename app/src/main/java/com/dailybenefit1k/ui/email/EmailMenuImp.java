@@ -21,7 +21,6 @@ import javax.inject.Inject;
 
 public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
-
     private Button startButton;
     private EditText mailEditext;
     private TextView countDownTextView;
@@ -43,7 +42,8 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
             }
         });
 
-        emailMenuPresenter.setView(this);
+        emailMenuPresenter.onAttach(this);
+
         emailMenuPresenter.countnNumber();
     }
 
@@ -71,7 +71,7 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
      Intent intent =  new Intent(getApplicationContext(),FormMenu.class);
      startActivity(intent);
-     
+
     }
 
     @Override
