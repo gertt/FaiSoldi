@@ -6,6 +6,5 @@ import dagger.Module;
 public class FormModule {
 
     public FormModule() {
-
     }
 }

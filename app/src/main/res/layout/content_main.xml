@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/idid"
     android:background="@color/backgroundeEmail"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.dailybenefit1k.ui.email.EmailMenuImp"
@@ -176,7 +175,7 @@
                 android:layout_marginLeft="16dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/bt_start"
                 android:layout_width="76dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
@@ -237,14 +236,16 @@
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <Button
-        android:id="@+id/button3"
+    <TextView
+        android:textSize="17sp"
+        android:gravity="center"
+        android:id="@+id/txt_coundoun"
         android:layout_width="76dp"
         android:layout_height="38dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/time_bacground"
-        android:textColor="@color/primiDiAndare"
+        android:textColor="@color/blackDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline12as"
         app:layout_constraintStart_toStartOf="@+id/guideline12"

@@ -49,7 +49,6 @@ public class NetworkModule {
 
                         okhttp3.Response response = chain.proceed(request);
                         response.cacheResponse();
-                        // Customize or return the response
                         return response;
                     }
                 })
@@ -64,19 +63,5 @@ public class NetworkModule {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
-
-//    @Provides
-//    @Singleton
-//    @SuppressWarnings("unused")
-//    static public NetworkService providesNetworkService(Retrofit retrofit) {
-//        return retrofit.create(NetworkService.class);
-//    }
-//    @Provides
-//    @Singleton
-//    @SuppressWarnings("unused")
-//    static public Service providesService(NetworkService networkService) {
-//        return new Service(networkService);
-//    }
-
 
 }

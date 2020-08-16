@@ -3,13 +3,11 @@ package com.dailybenefit1k.ui.email;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.dailybenefit1k.R;
 import com.dailybenefit1k.app.App;
@@ -23,68 +21,49 @@ import javax.inject.Inject;
 
 public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
-    private ConstraintLayout constraintLayout;
-    private Button bt;
-    private Button button_inizia;
-    private EditText edx_mail;
+
+    private Button startButton;
+    private EditText mailEditext;
+    private TextView countDownTextView;
 
     @Inject EmailMenu.Presenter emailMenuPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         ((App)getApplication()).getActivityComponent().inject(this);
 
-        setContentView(R.layout.activity_main);
+        setView();
 
-        bt = (Button) findViewById(R.id.button3);
-        button_inizia = (Button)findViewById(R.id.button);
-        edx_mail = (EditText)findViewById(R.id.editText);
-
-       constraintLayout = (ConstraintLayout)findViewById(R.id.idid);
-
-        button_inizia.setOnClickListener(new android.view.View.OnClickListener() {
+        startButton.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-
-                emailMenuPresenter.checkField(edx_mail.getText().toString());
-
-            }
-        });
-
-        constraintLayout.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-
-                Intent intent =  new Intent(getApplicationContext(),FormMenu.class);
-                startActivity(intent);
+                emailMenuPresenter.checkField(mailEditext.getText().toString());
             }
         });
 
         emailMenuPresenter.setView(this);
         emailMenuPresenter.countnNumber();
+    }
 
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private  void setView(){
 
-            }
-        });
-
+        startButton = (Button)findViewById(R.id.bt_start);
+        mailEditext = (EditText)findViewById(R.id.editText);
+        countDownTextView = (TextView)findViewById(R.id.txt_coundoun);
     }
 
     @Override
     public void onTick(String millisUntilFinished) {
 
-        bt.setText(millisUntilFinished);
-
+        countDownTextView.setText(millisUntilFinished);
     }
 
     @Override
     public void checkEmail() {
 
         Toast.makeText(getApplicationContext(),R.string.check_email,Toast.LENGTH_LONG).show();
-
     }
 
     @Override
@@ -92,13 +71,17 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
      Intent intent =  new Intent(getApplicationContext(),FormMenu.class);
      startActivity(intent);
+     
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        emailMenuPresenter.rxUnsubscribe();
     }
 
     @Override
     public boolean dispatchTouchEvent(final MotionEvent ev) {
-        // all touch events close the keyboard before they are processed except EditText instances.
-        // if focus is an EditText we need to check, if the touchevent was inside the focus editTexts
         final android.view.View currentFocus = getCurrentFocus();
         if (!(currentFocus instanceof EditText) || !isTouchInsideView(ev, currentFocus)) {
             ((InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE))
@@ -113,11 +96,5 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
         currentFocus.getLocationOnScreen(loc);
         return ev.getRawX() > loc[0] && ev.getRawY() > loc[1] && ev.getRawX() < (loc[0] + currentFocus.getWidth())
                 && ev.getRawY() < (loc[1] + currentFocus.getHeight());
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        emailMenuPresenter.rxUnsubscribe();
     }
 }

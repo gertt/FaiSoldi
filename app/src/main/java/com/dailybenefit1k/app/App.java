@@ -8,12 +8,10 @@ import com.dailybenefit1k.di.component.DaggerActivityComponent;
 import com.dailybenefit1k.di.component.DaggerApplicationComponent;
 import com.dailybenefit1k.di.module.ApplicationModule;
 import com.dailybenefit1k.di.module.EmailModule;
-import com.dailybenefit1k.di.module.FormModule;
 import com.dailybenefit1k.di.module.NetworkModule;
 import com.facebook.stetho.Stetho;
 
 import java.io.File;
-
 
 public class App extends Application {
 
@@ -28,7 +26,6 @@ public class App extends Application {
 
         component = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-              //  .formModule(new FormModule())
                 .networkModule(new NetworkModule(cacheFile))
                 .build();
 
@@ -40,13 +37,9 @@ public class App extends Application {
                 .build();
     }
 
-    public ApplicationComponent getComponent() {
-        return component;
-    }
+    public ApplicationComponent getComponent() { return component; }
 
-    public ActivityComponent getActivityComponent() {
-        return activityComponent;
-    }
+    public ActivityComponent getActivityComponent() { return activityComponent; }
 }
 
 

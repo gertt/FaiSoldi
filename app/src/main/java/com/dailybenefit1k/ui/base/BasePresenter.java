@@ -1,8 +1,10 @@
 package com.dailybenefit1k.ui.base;
 
+public  abstract class BasePresenter  <V extends Base.MvpView> implements Base.MvpPresenter<V>{
 
 
-public  class BasePresenter  <V extends MvpView> implements MvpPresenter<V>{
+
+
 
 
     @Override
