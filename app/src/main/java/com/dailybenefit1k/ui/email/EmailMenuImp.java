@@ -10,9 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dailybenefit1k.R;
-import com.dailybenefit1k.app.App;
 import com.dailybenefit1k.ui.base.BaseActivity;
-import com.dailybenefit1k.ui.menu.FormMenu;
+import com.dailybenefit1k.ui.menu.FormMenuImpl;
 import javax.inject.Inject;
 
 /**
@@ -31,7 +30,7 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((App)getApplication()).getActivityComponent().inject(this);
+        getmActivityComponent().inject(this);
 
         setView();
 
@@ -69,15 +68,16 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
     @Override
     public void success() {
 
-     Intent intent =  new Intent(getApplicationContext(),FormMenu.class);
+     Intent intent =  new Intent(getApplicationContext(), FormMenuImpl.class);
      startActivity(intent);
 
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         emailMenuPresenter.rxUnsubscribe();
+        emailMenuPresenter.onDetach();
+        super.onDestroy();
     }
 
     @Override

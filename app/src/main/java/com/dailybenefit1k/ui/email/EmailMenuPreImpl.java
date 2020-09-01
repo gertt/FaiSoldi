@@ -1,7 +1,8 @@
 package com.dailybenefit1k.ui.email;
 
-
+import com.dailybenefit1k.repository.Repository;
 import com.dailybenefit1k.repository.pref.PrefStorage;
+import com.dailybenefit1k.repository.pref.PrefStorageImp;
 import com.dailybenefit1k.ui.base.BasePresenter;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
@@ -20,26 +21,32 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
 
     private Disposable disposable;
 
-    PrefStorage prefStorage;
+
+
+    Repository repository;
+
+
+   // PrefStorage prefStorage;
+
 
     @Inject
-    public EmailMenuPreImpl(PrefStorage prefStorage) {
-        this.prefStorage = prefStorage;
-
+    public EmailMenuPreImpl( Repository repository) {
+        this.repository =  repository;
     }
-
 
     @Override
     public void countnNumber() {
         long start = 120;
         disposable = Observable.interval(1, TimeUnit.SECONDS)
-                .take(60)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        getmMvpView().onTick(Long.toString(start - aLong));
+
+                        long minute = TimeUnit.SECONDS.toMinutes(start - aLong) - (TimeUnit.SECONDS.toHours(start - aLong)* 60);
+                        long second = TimeUnit.SECONDS.toSeconds(start - aLong) - (TimeUnit.SECONDS.toMinutes(start - aLong) *60);
+                        getmMvpView().onTick(Long.toString(minute)  + ":" +Long.toString(second));
                     }
                 });
     }
@@ -50,7 +57,9 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
         if (!email.matches(EMAIL_PATERN)) {
             getmMvpView().checkEmail();
         } else {
-            prefStorage.saveEmail(email);
+         //   repository.saveEmail(email);
+
+            repository.saveEmail("yesss 99");
             getmMvpView().success();
         }
     }

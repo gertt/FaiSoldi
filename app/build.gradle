@@ -14,7 +14,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "int", "LIMIT", "100"
-        buildConfigField "String", "BASEURL", "\"http://private-b8cf44-androidcleancode.apiary-mock.com/\""
+        buildConfigField "String", "BASEURL", "\"http://services.melarossa.it/melaservicesdev/diets.php?lang=es&appVersion=3.2.1&sc=and\""
         buildConfigField "int", "CACHETIME", "432000" // 5days
     }
     buildTypes {
@@ -43,10 +43,13 @@ dependencies {
     def  stetho = '1.5.0'
     def  cardView = '23.3.+'
     def  spinner = '1.2.5'
-    def  dagger = '2.16'
+    def  dagger = '2.8'
     def  butKnife = '8.4.0'
     def  rxjava = '2.1.0'
     def  rxandroid = '2.2.3'
+    def  room_version = "2.2.5"
+
+
 
     //Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
@@ -79,5 +82,9 @@ dependencies {
     //RxJava
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava"
     implementation "io.reactivex.rxjava2:rxjava:$rxandroid"
+
+    //Room Database
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
 }

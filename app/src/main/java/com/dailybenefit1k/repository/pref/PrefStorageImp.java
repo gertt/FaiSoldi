@@ -11,17 +11,15 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 
-@Singleton
 public class PrefStorageImp implements PrefStorage {
 
     Context ctx;
     SharedPreferences mPrefs;
 
-
     private static final String PREF_KEY_EMAIL = "PREF_KEY_EMAIL";
 
     @Inject
-    public PrefStorageImp(@ApplicationContext Context ctx1, @PreferenceInfo String prefFileName) {
+    public PrefStorageImp(@ApplicationContext Context ctx1, @PreferenceInfo  String prefFileName) {
         this.ctx = ctx1;
         mPrefs = ctx1.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }

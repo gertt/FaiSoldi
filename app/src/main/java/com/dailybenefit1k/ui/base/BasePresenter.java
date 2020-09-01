@@ -1,7 +1,10 @@
 package com.dailybenefit1k.ui.base;
 
-public  abstract class BasePresenter  <V extends Base.MvpView> implements Base.MvpPresenter<V>{
+import com.dailybenefit1k.repository.Repository;
 
+import javax.inject.Inject;
+
+public  abstract class BasePresenter  <V extends Base.MvpView> implements Base.MvpPresenter<V>{
 
     private V mMvpView;
 
@@ -16,7 +19,6 @@ public  abstract class BasePresenter  <V extends Base.MvpView> implements Base.M
     public void onDetach() {
 
     }
-
 
     public V getmMvpView() {
         return mMvpView;

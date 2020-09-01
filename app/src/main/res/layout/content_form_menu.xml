@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundeEmail"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.dailybenefit1k.ui.menu.FormMenu"
+    tools:context="com.dailybenefit1k.ui.menu.FormMenuImpl"
     tools:showIn="@layout/activity_form_menu">
 
     <android.support.constraint.Guideline
