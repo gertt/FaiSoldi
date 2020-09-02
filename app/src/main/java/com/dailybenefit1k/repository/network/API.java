@@ -18,8 +18,6 @@ import retrofit2.http.Query;
 
 public interface API {
 
-
-
     @GET("users")
     Single<DataJson> getUserDetails();
 

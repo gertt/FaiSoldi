@@ -9,8 +9,7 @@ import com.dailybenefit1k.repository.RepositoryImp;
 import com.dailybenefit1k.repository.pref.PrefStorage;
 import com.dailybenefit1k.repository.pref.PrefStorageImp;
 import com.dailybenefit1k.util.Contants;
-
-
+import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
@@ -37,10 +36,11 @@ public class ApplicationModule {
     @Provides
     @PreferenceInfo
     static String providePreferenceName() {
-        return Contants.EMAIL_PATERN;
+        return Contants.PREFERENCE_VERSION;
     }
 
     @Provides
+    @Singleton
     static PrefStorage providePref(PrefStorageImp prefStorageImp){
         return prefStorageImp;
     }

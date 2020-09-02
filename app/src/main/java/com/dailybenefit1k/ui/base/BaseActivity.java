@@ -7,6 +7,11 @@ import com.dailybenefit1k.app.App;
 import com.dailybenefit1k.di.component.ActivityComponent;
 import com.dailybenefit1k.di.component.DaggerActivityComponent;
 import com.dailybenefit1k.di.module.EmailModule;
+import com.dailybenefit1k.di.module.NetworkModule;
+
+import java.io.File;
+
+import okhttp3.Cache;
 
 public  abstract class BaseActivity extends AppCompatActivity implements Base.MvpView {
 
@@ -17,6 +22,8 @@ public  abstract class BaseActivity extends AppCompatActivity implements Base.Mv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         mActivityComponent = DaggerActivityComponent.builder()
                 .emailModule(new EmailModule(this))

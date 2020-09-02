@@ -2,15 +2,13 @@ package com.dailybenefit1k.repository.pref;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 import com.dailybenefit1k.di.scope.ApplicationContext;
 import com.dailybenefit1k.di.scope.PreferenceInfo;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 
+@Singleton
 public class PrefStorageImp implements PrefStorage {
 
     Context ctx;

@@ -1,8 +1,6 @@
 package com.dailybenefit1k.ui.email;
 
 import com.dailybenefit1k.repository.Repository;
-import com.dailybenefit1k.repository.pref.PrefStorage;
-import com.dailybenefit1k.repository.pref.PrefStorageImp;
 import com.dailybenefit1k.ui.base.BasePresenter;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
@@ -21,13 +19,7 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
 
     private Disposable disposable;
 
-
-
     Repository repository;
-
-
-   // PrefStorage prefStorage;
-
 
     @Inject
     public EmailMenuPreImpl( Repository repository) {
@@ -57,9 +49,7 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter
         if (!email.matches(EMAIL_PATERN)) {
             getmMvpView().checkEmail();
         } else {
-         //   repository.saveEmail(email);
-
-            repository.saveEmail("yesss 99");
+            repository.saveEmail(email);
             getmMvpView().success();
         }
     }

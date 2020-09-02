@@ -42,7 +42,6 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
         });
 
         emailMenuPresenter.onAttach(this);
-
         emailMenuPresenter.countnNumber();
     }
 
@@ -75,6 +74,7 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
     @Override
     public void onDestroy() {
+
         emailMenuPresenter.rxUnsubscribe();
         emailMenuPresenter.onDetach();
         super.onDestroy();
