@@ -1,10 +1,12 @@
 package com.dailybenefit1k.repository;
 
+import com.dailybenefit1k.repository.network.model.DataJson;
 import com.dailybenefit1k.repository.pref.PrefStorage;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Single;
 
 
 public class RepositoryImp implements Repository {
@@ -25,6 +27,11 @@ public class RepositoryImp implements Repository {
 
     @Override
     public String getEmail() {
+        return null;
+    }
+
+    @Override
+    public Single<DataJson> getUserDetails() {
         return null;
     }
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -15,19 +14,14 @@ import android.widget.Toast;
 import com.dailybenefit1k.R;
 import com.dailybenefit1k.ui.base.BaseActivity;
 import com.jaredrummler.materialspinner.MaterialSpinner;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import javax.inject.Inject;
 import static com.dailybenefit1k.util.Contants.URL_PRIVACY;
-
 
 /**
  * Created by gPrifti on 7/5/2018.
  */
 
 public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
-
 
    private EditText edx_name;
    private EditText edx_surname;
@@ -40,43 +34,26 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
 
    private Button bt_signup;
 
-   private FormMenuPresenterImpl formMenuPresenter;
+   @Inject FormMenu.Presenter formMenuPresenter;
 
 
-   String city;
-
+   String city = "Italy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // ((App)getApplication()).getComponent().inject(this);
         setContentView(R.layout.activity_form_menu);
+        getmActivityComponent().inject(this);
 
-        city = "Italy";
-
-        edx_name = (EditText)findViewById(R.id.edx_name);
-        edx_surname = (EditText)findViewById(R.id.edx_surname);
-        edx_mail = (EditText)findViewById(R.id.edx_email);
-        edx_password = (EditText)findViewById(R.id.edx_password);
-        edx_phone = (EditText)findViewById(R.id.edx_phone);
-
-        txt_bottom = (TextView)findViewById(R.id.txt_botom);
-        txt_privacy = (TextView)findViewById(R.id.txt_privacy);
-
-        bt_signup = (Button) findViewById(R.id.bt_signup);
-
-
-      //  formMenuPresenter = new FormMenuPresenterImpl(getApplicationContext(),this);
+        setView();
 
         txt_bottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 urlPrivacy();
-
             }
         });
-
 
         txt_privacy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,8 +68,7 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
             @Override
             public void onClick(View v) {
 
-               // formMenuPresenter.checkField(edx_name.getText().toString(),edx_surname.getText().toString(),
-                 //       edx_mail.getText().toString(),edx_password.getText().toString(),edx_phone.getText().toString(),city);
+                formMenuPresenter.checkField("","","","","","");
 
             }
         });
@@ -125,9 +101,26 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
         
     }
 
+
+
+   private void setView(){
+
+       edx_name = (EditText)findViewById(R.id.edx_name);
+       edx_surname = (EditText)findViewById(R.id.edx_surname);
+       edx_mail = (EditText)findViewById(R.id.edx_email);
+       edx_password = (EditText)findViewById(R.id.edx_password);
+       edx_phone = (EditText)findViewById(R.id.edx_phone);
+
+       txt_bottom = (TextView)findViewById(R.id.txt_botom);
+       txt_privacy = (TextView)findViewById(R.id.txt_privacy);
+
+       bt_signup = (Button) findViewById(R.id.bt_signup);
+
+       formMenuPresenter.onAttach(this);
+   }
+
     @Override
     public  void  onBackPressed(){
-
 
     }
 

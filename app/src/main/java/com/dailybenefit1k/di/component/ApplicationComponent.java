@@ -19,8 +19,6 @@ public interface ApplicationComponent {
     void injectApplication(App app);
 
 
-   // API getApi();
-
     @ApplicationContext
     Context context();
 
