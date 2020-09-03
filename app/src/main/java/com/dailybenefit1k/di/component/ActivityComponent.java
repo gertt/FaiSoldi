@@ -9,7 +9,7 @@ import dagger.Component;
 
 
 @PerActivity
-@Component(modules = ActivityModule.class ,dependencies = ApplicationComponent.class )
+@Component(modules = ActivityModule.class, dependencies = ApplicationComponent.class)
 public interface ActivityComponent {
 
     void inject(EmailMenuImp emailMenuImp);

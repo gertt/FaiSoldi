@@ -6,6 +6,8 @@ import com.dailybenefit1k.di.scope.ApplicationContext;
 import com.dailybenefit1k.di.scope.PreferenceInfo;
 import com.dailybenefit1k.repository.Repository;
 import com.dailybenefit1k.repository.RepositoryImp;
+import com.dailybenefit1k.repository.network.ApiHelper;
+import com.dailybenefit1k.repository.network.ApiHelperImp;
 import com.dailybenefit1k.repository.pref.PrefStorage;
 import com.dailybenefit1k.repository.pref.PrefStorageImp;
 import com.dailybenefit1k.util.Contants;
@@ -41,13 +43,17 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    static PrefStorage providePref(PrefStorageImp prefStorageImp){
+    static PrefStorage providePref(PrefStorageImp prefStorageImp) {
         return prefStorageImp;
     }
 
+    @Provides
+    static ApiHelper provideNetwork(ApiHelperImp apiHelperImp) {
+        return apiHelperImp;
+    }
 
     @Provides
     static Repository provideRepository(RepositoryImp repositoryImp) {
         return repositoryImp;
-   }
+    }
 }

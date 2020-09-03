@@ -1,24 +1,21 @@
 package com.dailybenefit1k.repository;
 
+import com.dailybenefit1k.repository.network.ApiHelper;
 import com.dailybenefit1k.repository.network.model.DataJson;
 import com.dailybenefit1k.repository.pref.PrefStorage;
-
 import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import io.reactivex.Single;
-
 
 public class RepositoryImp implements Repository {
 
-
     private final  PrefStorage prefStorage;
+    private final  ApiHelper apiHelper;
 
     @Inject
-    public RepositoryImp(PrefStorage prefStorage) {
+    public RepositoryImp(PrefStorage prefStorage , ApiHelper apiHelper) {
         this.prefStorage = prefStorage;
+        this.apiHelper = apiHelper;
     }
-
 
     @Override
     public void saveEmail(String email) {
@@ -31,7 +28,7 @@ public class RepositoryImp implements Repository {
     }
 
     @Override
-    public Single<DataJson> getUserDetails() {
-        return null;
+    public Single<DataJson> doCall() {
+        return apiHelper.doCall();
     }
 }

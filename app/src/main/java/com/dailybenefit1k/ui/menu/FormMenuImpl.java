@@ -21,23 +21,24 @@ import static com.dailybenefit1k.util.Contants.URL_PRIVACY;
  * Created by gPrifti on 7/5/2018.
  */
 
-public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
+public class FormMenuImpl extends BaseActivity implements FormMenu.View {
 
-   private EditText edx_name;
-   private EditText edx_surname;
-   private EditText edx_mail;
-   private EditText edx_password;
-   private EditText edx_phone;
+    private EditText edx_name;
+    private EditText edx_surname;
+    private EditText edx_mail;
+    private EditText edx_password;
+    private EditText edx_phone;
 
-   private TextView txt_bottom;
-   private TextView txt_privacy;
+    private TextView txt_bottom;
+    private TextView txt_privacy;
 
-   private Button bt_signup;
+    private Button bt_signup;
 
-   @Inject FormMenu.Presenter formMenuPresenter;
+    @Inject
+    FormMenu.Presenter formMenuPresenter;
 
 
-   String city = "Italy";
+    String city = "Italy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +69,10 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
             @Override
             public void onClick(View v) {
 
-                formMenuPresenter.checkField("","","","","","");
+                formMenuPresenter.checkField("", "", "", "", "", "");
 
             }
         });
-
 
         String[] some_array = getResources().getStringArray(R.array.states);
 
@@ -81,46 +81,47 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
         spinner.setSelectedIndex(107);
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-              //  Snackbar.make(View,item+"  "+ id, Snackbar.LENGTH_LONG).show();
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                //  Snackbar.make(View,item+"  "+ id, Snackbar.LENGTH_LONG).show();
 
                 city = item;
             }
         });
         spinner.setOnNothingSelectedListener(new MaterialSpinner.OnNothingSelectedListener() {
 
-            @Override public void onNothingSelected(MaterialSpinner spinner) {
-              //  Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
+            @Override
+            public void onNothingSelected(MaterialSpinner spinner) {
+                //  Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
 
 
                 spinner.setSelectedIndex(0);
 
-                city="";
+                city = "";
             }
         });
-        
+
     }
 
 
+    private void setView() {
 
-   private void setView(){
+        edx_name = (EditText) findViewById(R.id.edx_name);
+        edx_surname = (EditText) findViewById(R.id.edx_surname);
+        edx_mail = (EditText) findViewById(R.id.edx_email);
+        edx_password = (EditText) findViewById(R.id.edx_password);
+        edx_phone = (EditText) findViewById(R.id.edx_phone);
 
-       edx_name = (EditText)findViewById(R.id.edx_name);
-       edx_surname = (EditText)findViewById(R.id.edx_surname);
-       edx_mail = (EditText)findViewById(R.id.edx_email);
-       edx_password = (EditText)findViewById(R.id.edx_password);
-       edx_phone = (EditText)findViewById(R.id.edx_phone);
+        txt_bottom = (TextView) findViewById(R.id.txt_botom);
+        txt_privacy = (TextView) findViewById(R.id.txt_privacy);
 
-       txt_bottom = (TextView)findViewById(R.id.txt_botom);
-       txt_privacy = (TextView)findViewById(R.id.txt_privacy);
+        bt_signup = (Button) findViewById(R.id.bt_signup);
 
-       bt_signup = (Button) findViewById(R.id.bt_signup);
-
-       formMenuPresenter.onAttach(this);
-   }
+        formMenuPresenter.onAttach(this);
+    }
 
     @Override
-    public  void  onBackPressed(){
+    public void onBackPressed() {
 
     }
 
@@ -144,46 +145,45 @@ public class FormMenuImpl extends BaseActivity implements  FormMenu.View {
                 && ev.getRawY() < (loc[1] + currentFocus.getHeight());
     }
 
-    private  void  urlPrivacy() {
+    private void urlPrivacy() {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_PRIVACY));
         startActivity(browserIntent);
     }
 
-
     @Override
     public void completeName() {
-        Toast.makeText(getApplicationContext(),R.string.check_name,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_name, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void completeSurname() {
-        Toast.makeText(getApplicationContext(),R.string.check_surname,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_surname, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void completeEmail() {
-        Toast.makeText(getApplicationContext(),R.string.check_email,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_email, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void completePassword() {
-        Toast.makeText(getApplicationContext(),R.string.check_password,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_password, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void completeCity() {
-        Toast.makeText(getApplicationContext(),R.string.check_state,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_state, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void completePhone() {
-        Toast.makeText(getApplicationContext(),R.string.check_phone,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), R.string.check_phone, Toast.LENGTH_LONG).show();
     }
 
 
     @Override
-    public void succes() {
-        //Toast.makeText(getApplicationContext(),"OK OK OK ",Toast.LENGTH_LONG).show();
+    public void succes(String sucess) {
+        Toast.makeText(getApplicationContext(), sucess, Toast.LENGTH_LONG).show();
     }
 }
 

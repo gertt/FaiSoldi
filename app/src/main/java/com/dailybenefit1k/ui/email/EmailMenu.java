@@ -2,7 +2,6 @@ package com.dailybenefit1k.ui.email;
 
 import com.dailybenefit1k.ui.base.Base;
 
-
 /**
  * Created by gPrifti on 7/5/2018.
  */

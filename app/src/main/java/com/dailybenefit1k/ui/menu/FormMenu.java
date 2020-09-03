@@ -20,7 +20,7 @@ public interface FormMenu  extends  Base.MvpView {
 
         void completeCity();
 
-        void succes();
+        void succes(String aucess);
 
         void completePhone();
 

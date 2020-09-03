@@ -15,7 +15,7 @@ import static com.dailybenefit1k.util.Contants.EMAIL_PATERN;
  * Created by gPrifti on 7/5/2018.
  */
 
-public class EmailMenuPreImpl  <T extends EmailMenu.View > extends BasePresenter<T> implements EmailMenu.Presenter<T>{
+public class EmailMenuPreImpl  <T extends EmailMenu.View> extends BasePresenter<T> implements EmailMenu.Presenter<T>{
 
     private Disposable disposable;
 

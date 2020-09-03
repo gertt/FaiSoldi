@@ -14,7 +14,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "int", "LIMIT", "100"
-        buildConfigField "String", "BASEURL", "\"http://services.melarossa.it/melaservicesdev/diets.php?lang=es&appVersion=3.2.1&sc=and\""
+        buildConfigField "String", "BASEURL", "\"https://api.github.com/\""
         buildConfigField "int", "CACHETIME", "432000" // 5days
     }
     buildTypes {
@@ -53,7 +53,7 @@ dependencies {
 
     //Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
 
     //Interceptor

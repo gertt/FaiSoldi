@@ -12,7 +12,7 @@ public interface Base {
 
     interface MvpView {
 
-        void onSucess();
+        void onSucess(String sucess);
 
         void onError();
 

@@ -2,13 +2,14 @@ package com.dailybenefit1k.ui.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import com.dailybenefit1k.R;
 import com.dailybenefit1k.app.App;
 import com.dailybenefit1k.di.component.ActivityComponent;
 import com.dailybenefit1k.di.component.DaggerActivityComponent;
 import com.dailybenefit1k.di.module.ActivityModule;
 
-public  abstract class BaseActivity extends AppCompatActivity implements Base.MvpView {
+public abstract class BaseActivity extends AppCompatActivity implements Base.MvpView {
 
     private ActivityComponent mActivityComponent;
 
@@ -29,7 +30,7 @@ public  abstract class BaseActivity extends AppCompatActivity implements Base.Mv
     }
 
     @Override
-    public void  onSucess(){
+    public void onSucess(String sucess) {
 
     }
 
