@@ -149,6 +149,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/time_bacground"
             android:gravity="center"
+            android:textSize="30sp"
             android:textColor="@color/blackDark"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -174,6 +175,7 @@
             app:layout_constraintTop_toTopOf="@+id/bt_start"/>
 
         <Button
+            android:padding="5dp"
             android:id="@+id/bt_start"
             android:layout_width="wrap_content"
             android:layout_height="0dp"

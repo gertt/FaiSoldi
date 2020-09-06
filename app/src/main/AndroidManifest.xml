@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.email.EmailMenuImp"
-            android:windowSoftInputMode="stateHidden"
             android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.menu.FormMenuImpl"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_activity_form_menu"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

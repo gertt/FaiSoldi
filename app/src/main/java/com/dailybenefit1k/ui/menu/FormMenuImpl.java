@@ -34,90 +34,92 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
 
     private Button bt_signup;
 
-    @Inject
-    FormMenu.Presenter formMenuPresenter;
+   // @Inject
+  //  FormMenu.Presenter formMenuPresenter;
 
     String city = "Italy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_menu);
+        setContentView(R.layout.content_form_menu2);
         getmActivityComponent().inject(this);
 
-        setView();
-
-        txt_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                urlPrivacy();
-            }
-        });
-
-        txt_privacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                urlPrivacy();
-            }
-        });
-
-
-        bt_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                formMenuPresenter.checkField("", "", "", "", "", "");
-
-            }
-        });
-
-        String[] some_array = getResources().getStringArray(R.array.states);
-
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
-        spinner.setItems(some_array);
-        spinner.setSelectedIndex(107);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                //  Snackbar.make(View,item+"  "+ id, Snackbar.LENGTH_LONG).show();
-
-                city = item;
-            }
-        });
-        spinner.setOnNothingSelectedListener(new MaterialSpinner.OnNothingSelectedListener() {
-
-            @Override
-            public void onNothingSelected(MaterialSpinner spinner) {
-                //  Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
-
-
-                spinner.setSelectedIndex(0);
-
-                city = "";
-            }
-        });
-
     }
 
+       // setView();
 
-    private void setView() {
+//        txt_bottom.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                urlPrivacy();
+//            }
+//        });
+//
+//        txt_privacy.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                urlPrivacy();
+//            }
+//        });
+//
+//
+//        bt_signup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //formMenuPresenter.checkField("", "", "", "", "", "");
+//
+//            }
+//        });
 
-        edx_name = findViewById(R.id.edx_name);
-        edx_surname = findViewById(R.id.edx_surname);
-        edx_mail = findViewById(R.id.edx_email);
-        edx_password = findViewById(R.id.edx_password);
-        edx_phone = findViewById(R.id.edx_phone);
+//        String[] some_array = getResources().getStringArray(R.array.states);
+//
+//        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+//        spinner.setItems(some_array);
+//        spinner.setSelectedIndex(107);
+//        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+//
+//            @Override
+//            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+//                //  Snackbar.make(View,item+"  "+ id, Snackbar.LENGTH_LONG).show();
+//
+//                city = item;
+//            }
+//        });
+//        spinner.setOnNothingSelectedListener(new MaterialSpinner.OnNothingSelectedListener() {
+//
+//            @Override
+//            public void onNothingSelected(MaterialSpinner spinner) {
+//                //  Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
+//
+//
+//                spinner.setSelectedIndex(0);
+//
+//                city = "";
+//            }
+//        });
+//
+//    }
 
-        txt_bottom = findViewById(R.id.txt_botom);
-        txt_privacy = findViewById(R.id.txt_privacy);
 
-        bt_signup = (Button) findViewById(R.id.bt_signup);
-
-        formMenuPresenter.onAttach(this);
-    }
+//    private void setView() {
+//
+//        edx_name = findViewById(R.id.edx_name);
+//        edx_surname = findViewById(R.id.edx_surname);
+//        edx_mail = findViewById(R.id.edx_email);
+//        edx_password = findViewById(R.id.edx_password);
+//        edx_phone = findViewById(R.id.edx_phone);
+//
+//        txt_bottom = findViewById(R.id.txt_botom);
+//        txt_privacy = findViewById(R.id.txt_privacy);
+//
+//        bt_signup = (Button) findViewById(R.id.bt_signup);
+//
+//        formMenuPresenter.onAttach(this);
+//    }
 
     @Override
     public void onBackPressed() {
