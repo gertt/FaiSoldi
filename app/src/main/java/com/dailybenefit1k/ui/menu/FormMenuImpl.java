@@ -15,7 +15,7 @@ import com.dailybenefit1k.R;
 import com.dailybenefit1k.ui.base.BaseActivity;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import javax.inject.Inject;
-import static com.dailybenefit1k.util.Contants.URL_PRIVACY;
+import static com.dailybenefit1k.util.Cons.URL_PRIVACY;
 
 /**
  * Created by gPrifti on 7/5/2018.
@@ -36,7 +36,6 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
 
     @Inject
     FormMenu.Presenter formMenuPresenter;
-
 
     String city = "Italy";
 
@@ -106,14 +105,14 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
 
     private void setView() {
 
-        edx_name = (EditText) findViewById(R.id.edx_name);
-        edx_surname = (EditText) findViewById(R.id.edx_surname);
-        edx_mail = (EditText) findViewById(R.id.edx_email);
-        edx_password = (EditText) findViewById(R.id.edx_password);
-        edx_phone = (EditText) findViewById(R.id.edx_phone);
+        edx_name = findViewById(R.id.edx_name);
+        edx_surname = findViewById(R.id.edx_surname);
+        edx_mail = findViewById(R.id.edx_email);
+        edx_password = findViewById(R.id.edx_password);
+        edx_phone = findViewById(R.id.edx_phone);
 
-        txt_bottom = (TextView) findViewById(R.id.txt_botom);
-        txt_privacy = (TextView) findViewById(R.id.txt_privacy);
+        txt_bottom = findViewById(R.id.txt_botom);
+        txt_privacy = findViewById(R.id.txt_privacy);
 
         bt_signup = (Button) findViewById(R.id.bt_signup);
 

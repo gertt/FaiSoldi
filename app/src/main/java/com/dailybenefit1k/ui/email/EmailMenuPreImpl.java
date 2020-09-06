@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import static com.dailybenefit1k.util.Contants.EMAIL_PATERN;
+import static com.dailybenefit1k.util.Cons.EMAIL_PATERN;
 
 /**
  * Created by gPrifti on 7/5/2018.

@@ -10,7 +10,7 @@ import com.dailybenefit1k.repository.network.ApiHelper;
 import com.dailybenefit1k.repository.network.ApiHelperImp;
 import com.dailybenefit1k.repository.pref.PrefStorage;
 import com.dailybenefit1k.repository.pref.PrefStorageImp;
-import com.dailybenefit1k.util.Contants;
+import com.dailybenefit1k.util.Cons;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
@@ -38,7 +38,7 @@ public class ApplicationModule {
     @Provides
     @PreferenceInfo
     static String providePreferenceName() {
-        return Contants.PREFERENCE_VERSION;
+        return Cons.PREFERENCE_VERSION;
     }
 
     @Provides

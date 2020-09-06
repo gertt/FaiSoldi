@@ -3,7 +3,6 @@ package com.dailybenefit1k.ui.email;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,7 +21,7 @@ import javax.inject.Inject;
 public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
     private Button startButton;
-    private EditText mailEditext;
+    private TextView mailEditext;
     private TextView countDownTextView;
 
     @Inject EmailMenu.Presenter emailMenuPresenter;
@@ -48,9 +47,9 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
     private  void setView(){
 
-        startButton = (Button)findViewById(R.id.bt_start);
-        mailEditext = (EditText)findViewById(R.id.editText);
-        countDownTextView = (TextView)findViewById(R.id.txt_coundoun);
+        startButton = findViewById(R.id.bt_start);
+        mailEditext = findViewById(R.id.txt_email);
+        countDownTextView = findViewById(R.id.txt_coundoun);
     }
 
     @Override
@@ -98,4 +97,5 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
         return ev.getRawX() > loc[0] && ev.getRawY() > loc[1] && ev.getRawX() < (loc[0] + currentFocus.getWidth())
                 && ev.getRawY() < (loc[1] + currentFocus.getHeight());
     }
+
 }

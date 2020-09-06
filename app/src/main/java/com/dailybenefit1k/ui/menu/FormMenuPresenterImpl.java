@@ -2,19 +2,15 @@ package com.dailybenefit1k.ui.menu;
 
 import com.dailybenefit1k.repository.Repository;
 import com.dailybenefit1k.ui.base.BasePresenter;
-
 import javax.inject.Inject;
-
 import io.reactivex.disposables.Disposable;
-
-import static com.dailybenefit1k.util.Contants.EMAIL_PATERN;
-
+import static com.dailybenefit1k.util.Cons.EMAIL_PATERN;
 
 public class FormMenuPresenterImpl<T extends FormMenu.View> extends BasePresenter<T> implements FormMenu.Presenter<T> {
 
     Repository repository;
 
-    private Disposable disposable;
+    Disposable disposable;
 
     @Inject
     public FormMenuPresenterImpl(Repository repository) {
@@ -44,7 +40,6 @@ public class FormMenuPresenterImpl<T extends FormMenu.View> extends BasePresente
                             throwable -> {
                                 getmMvpView().succes(throwable.toString());
                             });
-
         }
     }
 }

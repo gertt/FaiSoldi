@@ -14,7 +14,35 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="TextStyleJustNow">
+        <item name="android:textColor">@color/aspeta</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/txt_25sp</item>
+        <item name="android:text">@string/wait</item>
+    </style>
+
+    <style name="BeforeGo">
+        <item name="android:textColor">@color/primiDiAndare</item>
+        <item name="android:textSize">@dimen/txt_25sp</item>
+        <item name="android:text">@string/not_go</item>
+    </style>
+
+    <style name="DescriptionTraiding">
+        <item name="android:textColor">@color/primiDiAndare</item>
+        <item name="android:textSize">@dimen/txt_20sp</item>
+        <item name="android:text">@string/descriptions</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DescriptionDatails">
+        <item name="android:textColor">@color/primiDiAndare</item>
+        <item name="android:textSize">@dimen/txt_16sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 
 </resources>

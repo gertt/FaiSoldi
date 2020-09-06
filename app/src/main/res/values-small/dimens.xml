@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <!-- Email -->
+    <dimen name="txt_25sp">15sp</dimen>
+    <dimen name="txt_20sp">15sp</dimen>
+    <dimen name="txt_17sp">11sp</dimen>
+    <dimen name="txt_16sp">10sp</dimen>
+    <dimen name="txt_15sp">9sp</dimen>
+
+    <dimen name="height_80dp">55dp</dimen>
+
+    <dimen name="padding_8dp">6dp</dimen>
+
+</resources>

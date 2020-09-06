@@ -1,6 +1,6 @@
 package com.dailybenefit1k.util;
 
-public class Contants {
+public class Cons {
 
     public static String URL_PRIVACY = "https://faisoldiconinternet.com/public/privacy-policy";
 
