@@ -2,12 +2,16 @@
 <resources>
 
     <dimen name="txt_25sp">45sp</dimen>
+    <dimen name="txt_21sp">39sp</dimen>
     <dimen name="txt_20sp">38sp</dimen>
     <dimen name="txt_17sp">31sp</dimen>
     <dimen name="txt_16sp">30sp</dimen>
     <dimen name="txt_15sp">29sp</dimen>
 
+    <dimen name="txt_10sp">16sp</dimen>
+
     <dimen name="height_80dp">110dp</dimen>
+    <dimen name="height_50dp">72dp</dimen>
     <dimen name="padding_8dp">12dp</dimen>
 
 </resources>

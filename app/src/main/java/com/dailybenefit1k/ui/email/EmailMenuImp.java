@@ -1,12 +1,8 @@
 package com.dailybenefit1k.ui.email;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dailybenefit1k.R;
@@ -79,23 +75,4 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
         emailMenuPresenter.onDetach();
         super.onDestroy();
     }
-
-    @Override
-    public boolean dispatchTouchEvent(final MotionEvent ev) {
-        final android.view.View currentFocus = getCurrentFocus();
-        if (!(currentFocus instanceof EditText) || !isTouchInsideView(ev, currentFocus)) {
-            ((InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE))
-                    .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-
-        return super.dispatchTouchEvent(ev);
-    }
-
-    private boolean isTouchInsideView(final MotionEvent ev, final android.view.View currentFocus) {
-        final int[] loc = new int[2];
-        currentFocus.getLocationOnScreen(loc);
-        return ev.getRawX() > loc[0] && ev.getRawY() > loc[1] && ev.getRawX() < (loc[0] + currentFocus.getWidth())
-                && ev.getRawY() < (loc[1] + currentFocus.getHeight());
-    }
-
 }

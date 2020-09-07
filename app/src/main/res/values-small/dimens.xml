@@ -3,12 +3,16 @@
 
     <!-- Email -->
     <dimen name="txt_25sp">15sp</dimen>
+    <dimen name="txt_21sp">26sp</dimen>
     <dimen name="txt_20sp">15sp</dimen>
     <dimen name="txt_17sp">11sp</dimen>
     <dimen name="txt_16sp">10sp</dimen>
     <dimen name="txt_15sp">9sp</dimen>
 
+    <dimen name="txt_10sp">7sp</dimen>
+
     <dimen name="height_80dp">55dp</dimen>
+    <dimen name="height_50dp">35dp</dimen>
 
     <dimen name="padding_8dp">6dp</dimen>
 

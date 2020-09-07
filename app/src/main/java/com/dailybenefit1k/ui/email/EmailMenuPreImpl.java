@@ -28,7 +28,7 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View> extends BasePresenter<
 
     @Override
     public void countnNumber() {
-        long start = 120;
+        long start = 60;
         disposable = Observable.interval(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -36,16 +36,19 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View> extends BasePresenter<
                     @Override
                     public void accept(Long aLong) throws Exception {
 
-                        long minute = TimeUnit.SECONDS.toMinutes(start - aLong) - (TimeUnit.SECONDS.toHours(start - aLong)* 60);
-                        long second = TimeUnit.SECONDS.toSeconds(start - aLong) - (TimeUnit.SECONDS.toMinutes(start - aLong) *60);
-                        getmMvpView().onTick(Long.toString(minute)  + ":" +Long.toString(second));
+                        long minute = TimeUnit.SECONDS.toMinutes(start - aLong) - (TimeUnit.SECONDS.toHours(start - aLong) * 60);
+                        long second = TimeUnit.SECONDS.toSeconds(start - aLong) - (TimeUnit.SECONDS.toMinutes(start - aLong) * 60);
+
+                        if ((minute + ":" +second).equalsIgnoreCase("0:0"))
+                            disposable.dispose();
+
+                        getmMvpView().onTick((minute + ":" +second));
                     }
                 });
     }
 
     @Override
     public void checkField(String email) {
-
         if (!email.matches(EMAIL_PATERN)) {
             getmMvpView().checkEmail();
         } else {
