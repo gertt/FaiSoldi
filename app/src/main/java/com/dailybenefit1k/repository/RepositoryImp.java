@@ -2,6 +2,7 @@ package com.dailybenefit1k.repository;
 
 import com.dailybenefit1k.repository.network.ApiHelper;
 import com.dailybenefit1k.repository.network.model.DataJson;
+import com.dailybenefit1k.repository.network.model.request.FormModel;
 import com.dailybenefit1k.repository.pref.PrefStorage;
 import javax.inject.Inject;
 import io.reactivex.Single;
@@ -28,7 +29,8 @@ public class RepositoryImp implements Repository {
     }
 
     @Override
-    public Single<DataJson> doCall() {
-        return apiHelper.doCall();
+    public Single<DataJson> registration(FormModel formModel) {
+        return apiHelper.registration(formModel);
     }
+
 }

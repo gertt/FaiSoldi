@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundeEmail"
@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
@@ -351,11 +349,13 @@
             android:id="@+id/txt_botom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textSize="@dimen/txt_10sp"
-            android:textColor="@color/backgroundFieldForm"
             android:text="@string/complete_registrations"
+            android:textColor="@color/backgroundFieldForm"
+            android:textSize="@dimen/txt_10sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
@@ -372,7 +372,4 @@
             app:layout_constraintStart_toStartOf="@+id/txt_botom"
             app:layout_constraintTop_toBottomOf="@+id/txt_botom" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</android.support.v4.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

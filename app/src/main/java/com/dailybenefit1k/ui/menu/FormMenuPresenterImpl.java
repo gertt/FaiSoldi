@@ -1,16 +1,20 @@
 package com.dailybenefit1k.ui.menu;
 
 import com.dailybenefit1k.repository.Repository;
+import com.dailybenefit1k.repository.network.model.request.FormModel;
 import com.dailybenefit1k.ui.base.BasePresenter;
+
 import javax.inject.Inject;
+
 import io.reactivex.disposables.Disposable;
+
 import static com.dailybenefit1k.util.Cons.EMAIL_PATERN;
 
 public class FormMenuPresenterImpl<T extends FormMenu.View> extends BasePresenter<T> implements FormMenu.Presenter<T> {
 
-    Repository repository;
+   private Repository repository;
 
-    Disposable disposable;
+   private Disposable disposable;
 
     @Inject
     public FormMenuPresenterImpl(Repository repository) {
@@ -34,12 +38,22 @@ public class FormMenuPresenterImpl<T extends FormMenu.View> extends BasePresente
             getmMvpView().completeCity();
         } else {
 
-            disposable = repository.doCall()
-                    .subscribe(userInfo ->
-                                    getmMvpView().succes(userInfo.getAuthorizationsUrl()),
-                            throwable -> {
-                                getmMvpView().succes(throwable.toString());
-                            });
+            FormModel formModel = new FormModel();
+            formModel.setName(name);
+            formModel.setSurname(surname);
+            formModel.setMail(mail);
+            formModel.setPassword(password);
+            formModel.setPhone(phone);
+            formModel.setCity(city);
+
+            disposable = repository.registration(formModel)
+                    .subscribe(response -> getmMvpView().succes(),
+                            throwable -> getmMvpView().succes());
         }
+    }
+
+    @Override
+    public void rxUnsubscribe() {
+        disposable.dispose();
     }
 }

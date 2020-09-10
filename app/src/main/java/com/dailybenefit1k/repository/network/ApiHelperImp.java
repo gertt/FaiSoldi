@@ -1,6 +1,8 @@
 package com.dailybenefit1k.repository.network;
 
 import com.dailybenefit1k.repository.network.model.DataJson;
+import com.dailybenefit1k.repository.network.model.request.FormModel;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import io.reactivex.Single;
@@ -17,12 +19,14 @@ public class ApiHelperImp implements  ApiHelper {
         this.api = api;
     }
 
+
     @Override
-    public Single<DataJson> doCall() {
-        return api.getUserDetails()
+    public Single<DataJson> registration(FormModel formModel) {
+        return api.getRegistrationResponse(formModel)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(userInfo -> {})
                 .doOnError(userInfo ->{});
     }
+
 }

@@ -23,6 +23,5 @@ public interface EmailMenu  extends  Base.MvpView {
 
         void checkField(String string);
 
-        void rxUnsubscribe();
     }
 }

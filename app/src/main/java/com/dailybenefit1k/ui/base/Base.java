@@ -8,6 +8,8 @@ public interface Base {
         void onAttach(V mvpView);
 
         void onDetach();
+
+        void rxUnsubscribe();
     }
 
     interface MvpView {

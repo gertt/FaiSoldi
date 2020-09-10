@@ -19,7 +19,7 @@ public class EmailMenuPreImpl  <T extends EmailMenu.View> extends BasePresenter<
 
     private Disposable disposable;
 
-    Repository repository;
+    private Repository repository;
 
     @Inject
     public EmailMenuPreImpl( Repository repository) {

@@ -1,12 +1,8 @@
 package com.dailybenefit1k.ui.menu;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +11,7 @@ import com.dailybenefit1k.R;
 import com.dailybenefit1k.ui.base.BaseActivity;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import javax.inject.Inject;
+
 import static com.dailybenefit1k.util.Cons.URL_PRIVACY;
 
 /**
@@ -45,65 +42,24 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         setContentView(R.layout.content_form_menu2);
         getmActivityComponent().inject(this);
 
-
-
         setView();
 
-        txt_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        txt_bottom.setOnClickListener(v -> urlPrivacy());
 
-                urlPrivacy();
-            }
-        });
+        txt_privacy.setOnClickListener(v -> urlPrivacy());
 
-        txt_privacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                urlPrivacy();
-            }
-        });
-
-
-        bt_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                formMenuPresenter.checkField("", "", "", "", "", "");
-
-            }
-        });
+        bt_signup.setOnClickListener(v -> formMenuPresenter.checkField(fromTextToString(edx_name), fromTextToString(edx_surname), fromTextToString(edx_mail), fromTextToString(edx_password), fromTextToString(edx_phone), city));
 
         String[] some_array = getResources().getStringArray(R.array.states);
 
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+        MaterialSpinner spinner = findViewById(R.id.spinner);
         spinner.setItems(some_array);
-        spinner.setSelectedIndex(107);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                //  Snackbar.make(View,item+"  "+ id, Snackbar.LENGTH_LONG).show();
-
-                city = item;
-            }
+        spinner.setOnItemSelectedListener((MaterialSpinner.OnItemSelectedListener<String>) (view, position, id, item) -> city = item);
+        spinner.setOnNothingSelectedListener(spinner1 -> {
+            spinner1.setSelectedIndex(0);
+            city = "";
         });
-        spinner.setOnNothingSelectedListener(new MaterialSpinner.OnNothingSelectedListener() {
-
-            @Override
-            public void onNothingSelected(MaterialSpinner spinner) {
-                //  Snackbar.make(spinner, "Nothing selected", Snackbar.LENGTH_LONG).show();
-
-
-                spinner.setSelectedIndex(0);
-
-                city = "";
-            }
-        });
-
     }
-
 
     private void setView() {
 
@@ -123,7 +79,7 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
     }
 
     private void urlPrivacy() {
@@ -161,30 +117,20 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         Toast.makeText(getApplicationContext(), R.string.check_phone, Toast.LENGTH_LONG).show();
     }
 
-
     @Override
-    public void succes(String sucess) {
-        Toast.makeText(getApplicationContext(), sucess, Toast.LENGTH_LONG).show();
+    public void succes() {
+        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public boolean dispatchTouchEvent(final MotionEvent ev) {
-        // all touch events close the keyboard before they are processed except EditText instances.
-        // if focus is an EditText we need to check, if the touchevent was inside the focus editTexts
-        final View currentFocus = getCurrentFocus();
-        if (!(currentFocus instanceof EditText) || !isTouchInsideView(ev, currentFocus)) {
-            ((InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE))
-                    .hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-
-        return super.dispatchTouchEvent(ev);
+    public void onDestroy() {
+        formMenuPresenter.rxUnsubscribe();
+        formMenuPresenter.onDetach();
+        super.onDestroy();
     }
 
-    private boolean isTouchInsideView(final MotionEvent ev, final View currentFocus) {
-        final int[] loc = new int[2];
-        currentFocus.getLocationOnScreen(loc);
-        return ev.getRawX() > loc[0] && ev.getRawY() > loc[1] && ev.getRawX() < (loc[0] + currentFocus.getWidth())
-                && ev.getRawY() < (loc[1] + currentFocus.getHeight());
+    private String fromTextToString(EditText edx) {
+        return edx.getText().toString();
     }
 }
 

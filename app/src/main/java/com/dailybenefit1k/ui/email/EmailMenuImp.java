@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.dailybenefit1k.BuildConfig;
 import com.dailybenefit1k.R;
 import com.dailybenefit1k.ui.base.BaseActivity;
 import com.dailybenefit1k.ui.menu.FormMenuImpl;
@@ -30,12 +32,7 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
         setView();
 
-        startButton.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                emailMenuPresenter.checkField(mailEditext.getText().toString());
-            }
-        });
+        startButton.setOnClickListener(v -> emailMenuPresenter.checkField(mailEditext.getText().toString()));
 
         emailMenuPresenter.onAttach(this);
         emailMenuPresenter.countnNumber();
@@ -70,7 +67,6 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
     @Override
     public void onDestroy() {
-
         emailMenuPresenter.rxUnsubscribe();
         emailMenuPresenter.onDetach();
         super.onDestroy();
