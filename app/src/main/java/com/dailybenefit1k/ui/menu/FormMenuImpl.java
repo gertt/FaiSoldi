@@ -45,8 +45,8 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         setView();
 
         txt_bottom.setOnClickListener(v -> urlPrivacy());
-
         txt_privacy.setOnClickListener(v -> urlPrivacy());
+
 
         bt_signup.setOnClickListener(v -> formMenuPresenter.checkField(fromTextToString(edx_name), fromTextToString(edx_surname), fromTextToString(edx_mail), fromTextToString(edx_password), fromTextToString(edx_phone), city));
 
@@ -58,6 +58,8 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         spinner.setOnNothingSelectedListener(spinner1 -> {
             spinner1.setSelectedIndex(0);
             city = "";
+
+
         });
     }
 
@@ -72,9 +74,11 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         txt_bottom = findViewById(R.id.txt_botom);
         txt_privacy = findViewById(R.id.txt_privacy);
 
-        bt_signup = (Button) findViewById(R.id.bt_signup);
+        bt_signup = findViewById(R.id.bt_signup);
 
         formMenuPresenter.onAttach(this);
+
+        formMenuPresenter.setEmail();
     }
 
     @Override
@@ -118,6 +122,11 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
     }
 
     @Override
+    public void setEmail(String email) {
+        edx_mail.setText(email);
+    }
+
+    @Override
     public void succes() {
         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
     }
@@ -127,6 +136,11 @@ public class FormMenuImpl extends BaseActivity implements FormMenu.View {
         formMenuPresenter.rxUnsubscribe();
         formMenuPresenter.onDetach();
         super.onDestroy();
+    }
+
+    @Override
+    public void checkInternetConnection(){
+        Toast.makeText(getApplicationContext(), "check internet connections", Toast.LENGTH_LONG).show();
     }
 
     private String fromTextToString(EditText edx) {

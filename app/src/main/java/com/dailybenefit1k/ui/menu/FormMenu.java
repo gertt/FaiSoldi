@@ -24,11 +24,14 @@ public interface FormMenu  extends  Base.MvpView {
 
         void completePhone();
 
+        void setEmail(String email);
     }
 
     interface Presenter <T extends Base.MvpView>  extends Base.MvpPresenter<T> {
 
         void checkField(String name, String surname, String mail, String password, String phone, String city);
+
+        void setEmail();
     }
 
     interface Model {

@@ -29,6 +29,6 @@ public class PrefStorageImp implements PrefStorage {
 
     @Override
     public String getEmail() {
-        return mPrefs.getString(PREF_KEY_EMAIL, null);
+        return mPrefs.getString(PREF_KEY_EMAIL, "");
     }
 }

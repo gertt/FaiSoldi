@@ -39,7 +39,6 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
     }
 
     private  void setView(){
-
         startButton = findViewById(R.id.bt_start);
         mailEditext = findViewById(R.id.txt_email);
         countDownTextView = findViewById(R.id.txt_coundoun);
@@ -53,13 +52,11 @@ public class EmailMenuImp extends BaseActivity implements EmailMenu.View {
 
     @Override
     public void checkEmail() {
-
         Toast.makeText(getApplicationContext(),R.string.check_email,Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void success() {
-
      Intent intent =  new Intent(getApplicationContext(), FormMenuImpl.class);
      startActivity(intent);
 

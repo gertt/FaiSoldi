@@ -25,7 +25,7 @@ public class RepositoryImp implements Repository {
 
     @Override
     public String getEmail() {
-        return null;
+        return  prefStorage.getEmail();
     }
 
     @Override
